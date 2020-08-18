@@ -1,5 +1,6 @@
 defmodule Mediax.MixProject do
   use Mix.Project
+  alias Mediax.Application, as: MediaxApplication
 
   def project do
     [
@@ -14,7 +15,10 @@ defmodule Mediax.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger]
+      extra_applications: [
+        :logger
+      ],
+      mod: {MediaxApplication, []}
     ]
   end
 
@@ -24,6 +28,7 @@ defmodule Mediax.MixProject do
       {:credo, "~> 0.8", only: [:dev, :test], runtime: false},
       {:ex_doc, "~> 0.19", only: :dev, runtime: false},
       {:telemetry, "~> 0.4"},
+      {:plug_cowboy, "~> 2.0"},
     ]
   end
 end
